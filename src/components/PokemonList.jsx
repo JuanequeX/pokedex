@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 
-const PokemonList = () => {
+const PokemonList = ({ pokemon }) => {
+  // const [pokemons, setPokemons] = useState([])
+
   return (
-    <div className='list-container'>Lista de pokemons</div>
+    <div>
+      <a>{pokemon.name}</a>
+    </div>
   )
 }
 
