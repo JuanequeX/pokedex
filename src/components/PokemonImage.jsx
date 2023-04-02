@@ -1,8 +1,10 @@
 import React from 'react'
 
-const PokemonImage = () => {
+const PokemonImage = ({ src }) => {
   return (
-    <div>Imagen del pokemon</div>
+    <div>
+      <img src={src} alt="" />
+    </div>
   )
 }
 

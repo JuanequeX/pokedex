@@ -1,10 +1,18 @@
 import React, { useState, useEffect} from 'react'
 
-const PokemonList = ({ pokemon }) => {
+const PokemonList = ({ pokemon, setSelectedPokemon }) => {
   // const [pokemons, setPokemons] = useState([])
 
+  const handleSrc = () => {
+    fetch(pokemon.url)
+    .then((response) => response.json())
+    .then((data)=> {
+      setSelectedPokemon(data)
+    })
+  }
+
   return (
-    <div>
+    <div onClick={() => handleSrc()}>
       <a>{pokemon.name}</a>
     </div>
   )

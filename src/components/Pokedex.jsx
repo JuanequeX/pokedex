@@ -4,7 +4,8 @@ import PokemonList from './PokemonList'
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([])
-
+  const [selectedPokemon, setSelectedPokemon] = useState({})
+  const SRC = selectedPokemon?.sprites?.front_default
   let URL = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20'
 
   useEffect(() => {
@@ -13,17 +14,18 @@ const Pokedex = () => {
      return response.json()
     })
     .then((data) => {
-      console.log(data.results)
       setPokemons(data.results)
     })
   },[])
-  // debugger
+
   return (
     <div className='pokedex-container'>
-      <PokemonImage />
+      <div className='image-container'>
+        <PokemonImage src={SRC} />
+      </div>
       <div className='list-container'>
         { pokemons.map((pokemon, index) =>
-          <PokemonList pokemon={pokemon} key={index} />
+          <PokemonList pokemon={pokemon} key={index}  setSelectedPokemon={setSelectedPokemon}/>
         )}
       </div>
     </div>
