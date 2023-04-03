@@ -37,6 +37,22 @@
   }
 }
 
+
+.skill {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.skill__type__types {
+  display: flex;
+  flex-direction: row;
+}
+
+.skill__type__types > p{
+  text-transform: capitalize;
+}
+
 @media (min-width: 780px) {
 
   .pokedex-container {
@@ -62,5 +78,19 @@
 
   .pokemon-push {
     cursor: pointer;
+  }
+
+  .skill {
+    margin-top: 7rem auto;
+    margin: 4rem 0 1rem;
+  }
+
+  .skill__type {
+    font-size: 16px;
+  }
+
+  .skill__trait {
+    flex-wrap: nowrap;
+    font-size: 16px;
   }
 }

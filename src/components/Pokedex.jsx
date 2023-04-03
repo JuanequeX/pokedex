@@ -75,7 +75,7 @@ const Pokedex = () => {
       {
         pokemon.showDetails && (
           <div>
-            <PokemonDetails />
+            <PokemonDetails pokemon={pokemon} setPokemon={setPokemon}/>
           </div>
         )
       }
