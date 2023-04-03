@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react'
 import PokemonImage from './PokemonImage'
 import PokemonList from './PokemonList'
 import { useSearchParams } from 'react-router-dom';
+import PokemonDetails from './PokemonDetails';
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([])
-  const [selectedPokemon, setSelectedPokemon] = useState({})
+  const [pokemon, setPokemon] = useState({showDetails: false})
+  // const [selectedPokemon, setSelectedPokemon] = useState({})
   const [currentPage, setCurrentPage] = useState(1)
   let [, setSearchParams] = useSearchParams();
 
 
-  const SRC = selectedPokemon?.sprites?.front_default
+  const SRC = pokemon?.sprites?.front_default
   const URL = 'https://pokeapi.co/api/v2/pokemon'
 
   useEffect(() => {
@@ -53,19 +55,30 @@ const Pokedex = () => {
     <div className='pokedex-container'>
       <div className='image-container'>
         <PokemonImage src={SRC} />
-      { currentPage > 1 && (
-        <button onClick={() => handlePreviousPage()}>Previous</button>
-      )}
-      { currentPage < Math.ceil(150 / 20) && (
-        <button onClick={() => handleNextPage()}>Next</button>
-      )}
-
-      </div>
-      <div className='list-container'>
-        { pokemons.map((pokemon, index) =>
-          <PokemonList pokemon={pokemon} key={index}  setSelectedPokemon={setSelectedPokemon}/>
+        {!pokemon.showDetails && (
+          <div>
+            { currentPage > 1 && ( <button onClick={() => handlePreviousPage()}>Previous</button> )}
+            { currentPage < Math.ceil(150 / 20) && ( <button onClick={() => handleNextPage()}>Next</button> )}
+          </div>
         )}
       </div>
+
+      {
+        !pokemon.showDetails && (
+        <div className='list-container'>
+          { pokemons.map((pokemon, index) =>
+            <PokemonList pokemon={pokemon} key={index} setPokemon={setPokemon} />
+          )}
+        </div>
+        )
+      }
+      {
+        pokemon.showDetails && (
+          <div>
+            <PokemonDetails />
+          </div>
+        )
+      }
     </div>
   )
 }
