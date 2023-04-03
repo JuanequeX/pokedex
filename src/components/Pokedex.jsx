@@ -15,7 +15,7 @@ const Pokedex = () => {
 
   useEffect(() => {
     setSearchParams({page: currentPage})
-    fetch(`${URL}/?offset=${getOffSet}&limit=${getLimit}`)
+    fetch(`${URL}/?offset=${getOffSet()}&limit=${getLimit()}`)
     .then((response) => {
      return response.json()
     })
@@ -42,12 +42,10 @@ const Pokedex = () => {
 
 
   const handlePreviousPage = () => {
-    console.log("Previous")
     setCurrentPage(currentPage -1)
   }
 
   const handleNextPage = () => {
-    console.log("Next")
     setCurrentPage(currentPage + 1)
   }
 
