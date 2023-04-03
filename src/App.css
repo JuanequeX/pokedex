@@ -55,4 +55,12 @@
     flex-direction: column;
     margin: 0 2rem 0;
   }
+
+  .push-container {
+    margin: .5rem 0;
+  }
+
+  .pokemon-push {
+    cursor: pointer;
+  }
 }

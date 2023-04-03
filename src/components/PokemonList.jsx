@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react'
 
 const PokemonList = ({ pokemon, setSelectedPokemon }) => {
-  // const [pokemons, setPokemons] = useState([])
 
   const handleSrc = () => {
     fetch(pokemon.url)
@@ -12,8 +11,8 @@ const PokemonList = ({ pokemon, setSelectedPokemon }) => {
   }
 
   return (
-    <div onClick={() => handleSrc()}>
-      <a>{pokemon.name}</a>
+    <div className='push-container' onClick={() => handleSrc()}>
+      <a className='pokemon-push'>{pokemon.name}</a>
     </div>
   )
 }
